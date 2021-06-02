@@ -1,5 +1,7 @@
 package funsets
 
+import java.util
+
 /**
  * 2. Purely Functional Sets.
  */
@@ -18,7 +20,7 @@ trait FunSets extends FunSetsInterface {
   /**
    * Returns the set of the one given element.
    */
-  def singletonSet(elem: Int): FunSet = ???
+  def singletonSet(elem: Int): FunSet = (some_int => some_int == elem)
 
 
   /**
