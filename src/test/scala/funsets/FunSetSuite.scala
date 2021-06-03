@@ -92,9 +92,10 @@ class FunSetSuite {
 
   @Test def `filter test`: Unit = {
     new TestSets {
-      val s = diff(s4, s5)
-      assert(contains(s, 4), "diff 7")
-      assert(!contains(s, 7), "diff 7 should be false")
+      val func1: Int => Boolean = (x: Int) => x%2 == 0
+      val filtered_set = filter(s4, func1)
+      assert(contains(filtered_set, 8), "filter 8")
+      assert(!contains(filtered_set, 7), "diff 7 should be false")
     }
   }
 
