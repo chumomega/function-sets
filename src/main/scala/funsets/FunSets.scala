@@ -27,24 +27,24 @@ trait FunSets extends FunSetsInterface {
    * Returns the union of the two given sets,
    * the sets of all elements that are in either `s` or `t`.
    */
-  def union(s: FunSet, t: FunSet): FunSet = ???
+  def union(s: FunSet, t: FunSet): FunSet = (some_int => contains(s,some_int) || contains(t,some_int))
 
   /**
    * Returns the intersection of the two given sets,
    * the set of all elements that are both in `s` and `t`.
    */
-  def intersect(s: FunSet, t: FunSet): FunSet = ???
+  def intersect(s: FunSet, t: FunSet): FunSet = (some_int => contains(s,some_int) && contains(t,some_int))
 
   /**
    * Returns the difference of the two given sets,
    * the set of all elements of `s` that are not in `t`.
    */
-  def diff(s: FunSet, t: FunSet): FunSet = ???
+  def diff(s: FunSet, t: FunSet): FunSet = (some_int => contains(s, some_int) && !contains(t, some_int))
 
   /**
    * Returns the subset of `s` for which `p` holds.
    */
-  def filter(s: FunSet, p: Int => Boolean): FunSet = ???
+  def filter(s: FunSet, p: Int => Boolean): FunSet = (some_int => contains(s, some_int) && p(some_int))
 
 
   /**

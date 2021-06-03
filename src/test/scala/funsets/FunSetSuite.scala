@@ -38,6 +38,8 @@ class FunSetSuite {
     val s1 = singletonSet(1)
     val s2 = singletonSet(2)
     val s3 = singletonSet(3)
+    val s4 = (x: Int) => x > 3
+    val s5 = (x: Int) => x > 5
   }
 
   /**
@@ -72,7 +74,29 @@ class FunSetSuite {
     }
   }
 
+  @Test def `intersection contains all elements in both sets`: Unit = {
+    new TestSets {
+      val s = intersect(s4, s5)
+      assert(contains(s, 7), "intersect 7")
+      assert(!contains(s, 2), "intersect 2 should be false")
+    }
+  }
 
+  @Test def `diff contains all elements in set 1 and not in set 2`: Unit = {
+    new TestSets {
+      val s = diff(s4, s5)
+      assert(contains(s, 4), "diff 7")
+      assert(!contains(s, 7), "diff 7 should be false")
+    }
+  }
+
+  @Test def `filter test`: Unit = {
+    new TestSets {
+      val s = diff(s4, s5)
+      assert(contains(s, 4), "diff 7")
+      assert(!contains(s, 7), "diff 7 should be false")
+    }
+  }
 
   @Rule def individualTestTimeout = new org.junit.rules.Timeout(10 * 1000)
 }
