@@ -99,5 +99,40 @@ class FunSetSuite {
     }
   }
 
+  @Test def `forAll test 1`: Unit = {
+    new TestSets {
+      val func1: Int => Boolean = (x: Int) => x>0
+      val is_for_all: Boolean = forall(s5, func1)
+      assert(is_for_all, "is for all greater than 0")
+//      assert(!contains(filtered_set, 7), "diff 7 should be false")
+    }
+  }
+
+  @Test def `forAll test 2`: Unit = {
+    new TestSets {
+      val func1: Int => Boolean = (x: Int) => x>10
+      val is_for_all: Boolean = forall(s5, func1)
+      assert(!is_for_all, "is not for all greater than 0")
+//      assert(!contains(filtered_set, 7), "diff 7 should be false")
+    }
+  }
+
+  @Test def `exists test 1`: Unit = {
+    new TestSets {
+      val func1: Int => Boolean = (x: Int) => x>30
+      val exists_in: Boolean = exists(s5, func1)
+      assert(exists_in, "bounded exists in range")
+//      assert(!contains(filtered_set, 7), "diff 7 should be false")
+    }
+  }
+
+  @Test def `exists test 2`: Unit = {
+    new TestSets {
+      val func1: Int => Boolean = (x: Int) => x>1000
+      val exists_in: Boolean = exists(s5, func1)
+      assert(!exists_in, "bounded does not exist in range")
+    }
+  }
+
   @Rule def individualTestTimeout = new org.junit.rules.Timeout(10 * 1000)
 }
